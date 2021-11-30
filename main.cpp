@@ -2,13 +2,13 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
-typedef double double_t_t;
+typedef double double_t;
 
 const index_t hsize = 1000;
-const index_t tsize = 1000;
+const index_t tsize = 10000;
 
 const double_t h = 10.0 / hsize;
-const double_t tau = 10.0 / tsize;
+const double_t tau = 0.01 / tsize;
 
 
 int main()
@@ -30,6 +30,7 @@ int main()
     of.open("n.txt", std::ios::out | std::ios::trunc);
     for (index_t i = 0; i < hsize; ++i)
         of << ns[i] << std::endl;
+    delete[] ns;
 
     return 0;
 }

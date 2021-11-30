@@ -30,7 +30,6 @@ template<typename T, index_t hsize, index_t tsize> class simpleSolver : public S
         ~simpleSolver();
         void solve();
         T** getSolved();
-        T* getConcentrations();
 };
 
 template<typename T, index_t hsize, index_t tsize>
@@ -69,8 +68,8 @@ void simpleSolver<T, hsize, tsize>::solve()
         }
     } else {
         for (index_t i = 1; i < tsize; ++i) {
-            for (index_t j = 0; j < hsize - 1; ++j) {
-                arr[i][j] = -sigma * (arr[i - 1][j + 1] - arr[i - 1][j]) + arr[i - 1][j];
+            for (index_t j = 1; j < hsize; ++j) {
+                arr[i][j] = -sigma * (arr[i - 1][j] - arr[i - 1][j - 1]) + arr[i - 1][j];
             }
         }
     }
